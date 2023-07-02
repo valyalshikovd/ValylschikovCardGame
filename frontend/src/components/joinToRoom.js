@@ -1,25 +1,33 @@
 import React, {useState} from 'react';
 import {Button, TextField, Paper} from '@material-ui/core';
 import GamePage from "./GamePage";
-import LoginPage from "./LoginPage";
-import CreateNewRoom from "./CreateNewRoom";
-
-
 const JoinToRoom = ({socket, name}) => {
     const [btn, setButton] = useState(false);
     const [code, setCode] = useState("");
+    const [room_exsist, setRoom_exists] = useState(false);
     const setBUtton = (e) => {
         setButton(true);
     };
+    useState(() => {
+        socket.current.on("room_exists", (flag) => {
+            setRoom_exists(flag)
+        });
+    }, [socket.current]);
     const roomNameChangeHandler = (e) => {
         setCode(e.target.value);
     };
-    const join = (e) => {
+    const join =  (tmp) => {
+        if(tmp === 0){
+            return
+        }
+        socket.current.emit('room_exists', code);
         const roomName = "";
-        socket.current.emit('join_room', { roomName, name, code });
-        setBUtton(true)
+            if (room_exsist) {
+                socket.current.emit('join_room', {roomName, name, code});
+                setBUtton(true)
+            }
+        join(tmp-1)
     };
-
     return (
         <div>
             <div>
@@ -28,7 +36,6 @@ const JoinToRoom = ({socket, name}) => {
                         socket={socket}
                         name={name}
                         code={code}
-                        first={-1}
                     />
                 ) : (
                     <div className="login flex-centered-column">
@@ -36,11 +43,11 @@ const JoinToRoom = ({socket, name}) => {
                             onChange={roomNameChangeHandler}
                             className='textfield'
                             variant='outlined'
-                            label='NameRoom'
+                            label='CodeRoom'
                             inputProps={{maxLength: 25}}
                         />
                         <div className="button">
-                            <Button color="primary" variant="contained" onClick={join}>Присоедениться</Button>
+                            <Button color="primary" variant="contained" onClick={join(2)}>Присоедениться</Button>
                         </div>
                     </div>
                 )}
@@ -48,5 +55,4 @@ const JoinToRoom = ({socket, name}) => {
         </div>
     )
 }
-export default JoinToRoom
-;
+export default JoinToRoom;

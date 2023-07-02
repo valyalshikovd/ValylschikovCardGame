@@ -1,11 +1,7 @@
 import React, {useState} from 'react';
-import {Button, TextField, Paper} from '@material-ui/core';
-import GamePage from "./GamePage";
-import LoginPage from "./LoginPage";
+import {Button} from '@material-ui/core';
 import CreateNewRoom from "./CreateNewRoom";
 import JoinToRoom from "./joinToRoom";
-
-
 const Hub = ({socket, name}) => {
     const [btn, setButton] = useState(false);
     const [code, setCode] = useState("");
@@ -13,13 +9,9 @@ const Hub = ({socket, name}) => {
     const setBUtton = (e) => {
         setButton(true);
     };
-    const roomNameChangeHandler = (e) => {
-        setCode(e.target.value);
-    };
     const join = (e) => {
         setJoin(true)
     };
-
     return (
         <div>
             <div>

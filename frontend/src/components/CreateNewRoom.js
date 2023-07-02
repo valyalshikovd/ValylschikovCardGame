@@ -1,31 +1,21 @@
 import React, {useState} from 'react';
 import {Button, TextField, Paper} from '@material-ui/core';
 import GamePage from "./GamePage";
-import LoginPage from "./LoginPage";
-import Hub from "./Hub";
-//import Hub from "./Hub";
-
 
 const CreateNewRoom = ({socket, name}) => {
     const [btn, setButton] = useState(false);
     const [roomName, setRoomName] = useState("");
     const [code, setCode] = useState("");
     const join = (e) => {
-        let rmNm = roomName
-        console.log(rmNm)
-        socket.current.emit('join_room', {roomName, name, code });
+        socket.current.emit('join_room', {roomName, name, code});
         setButton(true);
     };
-
     const roomNameChangeHandler = (e) => {
         setRoomName(e.target.value);
     };
     const createRoom = () => {
-        console.log("вау")
-        console.log(roomName)
         let codef = '';
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
         for (let i = 0; i < 10; i++) {
             codef += characters.charAt(Math.floor(Math.random() * characters.length));
         }
@@ -39,7 +29,6 @@ const CreateNewRoom = ({socket, name}) => {
                         socket={socket}
                         name={name}
                         code={code}
-                        first={1}
                     />
                 ) : (
                     <div className="login flex-centered-column">

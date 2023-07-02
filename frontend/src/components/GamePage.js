@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
-import Game from "./MYGAME";
 import MYGAME from "./MYGAME";
 
-const GamePage = ({ socket, name, code, first }) => {
+const GamePage = ({ socket, name, code }) => {
   const [start, setStart] = useState(false);
   const [playerCount, setPlayerCount] = useState(0);
   const [roomName, setRoomName] = useState("");
   const [updates, setUpdates] = useState([]);
   const items = updates.map((item, index) => {
         return <li key={index} style={{ whiteSpace: 'pre-wrap' }}>{item}</li>;
-  }
-  );
-
+  });
   useState(() => {
     socket.current.on("player_count", (count) => {
       setPlayerCount(count);
@@ -22,27 +19,18 @@ const GamePage = ({ socket, name, code, first }) => {
     });
     socket.current.on("start_game", () => {
       setStart(true);
-      console.log("вау")
     });
   }, [socket.current]);
-
-
-
-
   const startGame = () => {
     if (playerCount < 2) {
       window.alert("Вам необходимо минимум 2 человека для начала игры");
       return null;
     }
     socket.current.emit("start_game", code);
-    console.log("Игра начата");
-
   };
-
   const leaveRoom = () => {
     socket.current.emit("leave_room", { name, code });
   };
-
   return (
     <div className="gamepage">
       {start ? (
@@ -50,7 +38,6 @@ const GamePage = ({ socket, name, code, first }) => {
           room={code}
           socket={socket}
           name={name}
-          first={first}
         />
       ) : (
         <div className="flex-centered">
@@ -73,12 +60,6 @@ const GamePage = ({ socket, name, code, first }) => {
                   start{" "}
                 </Button>
               </div>
-              <div className="button">
-                <Button color="primary" variant="contained" onClick={leaveRoom}>
-                  {" "}
-                  Покинуть комнату{" "}
-                </Button>
-              </div>
 
             </div>
           </div>
@@ -92,5 +73,4 @@ const GamePage = ({ socket, name, code, first }) => {
     </div>
   );
 };
-
 export default GamePage;
