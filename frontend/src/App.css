@@ -1,0 +1,198 @@
+.App {
+  background-color: darkgreen ;
+  min-height: 100vh;
+  font-family: 'Open Sans';
+}
+
+
+.login {  background-color: white;
+  margin: 2vmin;
+  padding: 4vmin;
+  border-radius: 1vmin;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+
+.rules{
+  background-color: white;
+  padding: 2vmin;
+  width: 50vmin;
+  height: 60vmin;
+  border-radius: 10px;
+  margin: 2vmin;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+
+.login .textfield{
+  margin: 1vmin;
+}
+
+.login h1{
+  font-size: 6vmin;
+  color: #212121;
+}
+
+#cards {
+  min-width: 82vmin;
+}
+
+#board {
+  min-height: 220px;
+}
+
+#playerCards {
+  clear: both;
+  /* width:100%; */
+  min-height: 220px;
+}
+
+.throw {
+  height: 160px;
+  min-width: 120px;
+  color: white;
+  background-color: white;
+  border-radius: 10px;
+  border: 5px solid #282828;
+}
+
+.players {
+  height: 120px;
+}
+
+.card {
+  box-sizing: border-box;  
+  width: 12vmin;
+  height: 17vmin;
+  margin:10px;
+  float: left;  
+  background-color: white;
+  /* background-size: cover; */
+  background-position-x: 0px;
+  background-position-y: center;
+  background-repeat: none;
+  background-position: middle center;  
+  border: 1px #555555 solid;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 3px 0px #000000; 
+  box-shadow: 2px 2px 3px 0px #000000; 
+}
+
+HR {
+  margin-top:12px;
+  display: block;
+  width:100%;
+}
+
+BUTTON {
+  cursor: pointer;
+  width:200px;
+  height:40px;
+  text-align:center;
+  margin:20px;
+  border-radius: 5px;
+  
+}
+
+.updates {
+  height: 40vmin;
+  width: 50vmin;
+  background-color: white;
+  margin: 20px;
+  /* overflow: auto; */
+  border-radius: 10px;
+  border: 10px solid white;
+  /* box-shadow: 0 0 0 10px hsl(236, 69%, 28%) */
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+  font-size: 2vmin;
+}
+
+.updates h2{
+  text-align: center;
+  font-size: 5vmin;
+  margin: 10px;
+}
+
+ul {
+  list-style-type: square;
+}
+
+.list {
+  height: 320px;
+  overflow: auto;
+}
+
+.abutton {
+  margin: 5px;
+  padding: 20px;
+}
+
+.profilecircle {
+  border: 5px solid #282828;
+  background-color: #282a36;
+  color: white;
+  border-radius: 50%;
+  padding: 20px;
+  font-size: 50px;
+  font-weight: 800;
+  width: 50px;
+  height: 50px;
+}
+
+.currentturn {
+  box-shadow: 0px 0px 20px 5 green;
+  border: 5px solid green;
+
+}
+
+.button {
+  margin: 10px;
+}
+
+.actions {
+  display: flex;
+}
+
+.flex-centered-column{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flex-centered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.rules div{
+  overflow: auto;
+  padding: 1vmin;
+  /* font-family: 'Open Sans'; */
+  color: #212121;
+  font-weight: 600;
+}
+
+.rules h1{
+  margin: 0;
+  font-size: 8vmin;
+}
+
+.rules ol {
+  padding: 1.5vmin;
+  margin: 0.5vmin;
+}
+
+.rules ol li {
+  font-size: 2vmin;
+}
+
+.profilecirclediv{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.profilecirclediv h3{
+  margin: 5px;
+}
