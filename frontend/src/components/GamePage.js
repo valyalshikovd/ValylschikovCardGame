@@ -63,11 +63,6 @@ const GamePage = ({ socket, name, code }) => {
 
             </div>
           </div>
-          <div className="updates">
-            <ul>
-              {items}
-            </ul>
-          </div>
         </div>
       )}
     </div>
